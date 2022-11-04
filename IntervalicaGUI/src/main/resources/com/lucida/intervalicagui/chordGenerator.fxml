@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="BASELINE_CENTER" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucida.intervalicagui.controllers.BaseController">
+    <children>
+        <MenuBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" useSystemMenuBar="true">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+            <children>
+                <ScrollPane HBox.hgrow="ALWAYS">
+                    <content>
+                        <VBox fx:id="mainPanel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                            <children>
+                                <Label fx:id="title" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="321.0" text="Nuevo acorde" VBox.vgrow="ALWAYS">
+                                    <font>
+                                        <Font name="Calibri Light" size="48.0" />
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets left="30.0" right="30.0" top="30.0" />
+                                    </VBox.margin>
+                                </Label>
+                        <HBox>
+                           <children>
+                              <VBox>
+                                 <children>
+                                              <TextField fx:id="enterChordInput" prefHeight="30.0" prefWidth="200.0" promptText="Escribe aquí el nombre del acorde">
+                                       <VBox.margin>
+                                          <Insets left="30.0" top="30.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <HBox alignment="CENTER">
+                                       <VBox.margin>
+                                          <Insets left="30.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label text="Duración: ">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <ChoiceBox fx:id="durationChoiceBox" prefHeight="30.0" prefWidth="200.0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                                        <Button fx:id="enterChordButton" mnemonicParsing="false" onAction="#enterChordButtonAction" prefHeight="60.0" prefWidth="120.0" text="Crear">
+                                 <HBox.margin>
+                                    <Insets bottom="30.0" right="30.0" top="30.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                                <Text fx:id="chordNameValidation" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="375.0">
+                                    <VBox.margin>
+                                        <Insets bottom="30.0" left="30.0" />
+                                    </VBox.margin>
+                                </Text>
+                            </children>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+                <ScrollPane hbarPolicy="NEVER" minWidth="200.0" HBox.hgrow="NEVER">
+                    <content>
+                        <VBox fx:id="reproductionPanel" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                            <children>
+                                <HBox spacing="5.0">
+                                    <children>
+                                        <Button fx:id="playButton" contentDisplay="TOP" mnemonicParsing="false" />
+                                        <Button fx:id="pauseButton" contentDisplay="TOP" mnemonicParsing="false">
+                                            <HBox.margin>
+                                                <Insets />
+                                            </HBox.margin>
+                                        </Button>
+                                        <Button fx:id="stopButton" contentDisplay="TOP" mnemonicParsing="false" />
+                                    </children>
+                                </HBox>
+                                <Label text="Volumen">
+                                    <VBox.margin>
+                                        <Insets top="15.0" />
+                                    </VBox.margin>
+                                </Label>
+                                <Slider>
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                </Slider>
+                            </children>
+                            <padding>
+                                <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                            </padding>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+                <ScrollPane hbarPolicy="NEVER" HBox.hgrow="NEVER">
+                    <content>
+                        <VBox fx:id="secondaryInputsContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity">
+                            <children>
+                                <VBox>
+                                    <children>
+                                        <HBox alignment="CENTER">
+                                            <children>
+                                                <Label fx:id="bpmlabel" text="BPM: " />
+                                                <TextField fx:id="bpmInputText" onAction="#bpmValidate" text="120" />
+                                            </children>
+                                        </HBox>
+                                        <Slider fx:id="bpmSlider" blockIncrement="1.0" max="240.0" min="20.0" minorTickCount="1" prefHeight="12.0" prefWidth="200.0" value="120.0" />
+                                        <Text fx:id="bpmValidation" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="200.0" />
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets bottom="15.0" left="30.0" right="30.0" top="30.0" />
+                                    </VBox.margin>
+                                </VBox>
+                                <VBox>
+                                    <children>
+                                        <HBox alignment="CENTER">
+                                            <children>
+                                                <Label text="La(Hz): " />
+                                                <TextField fx:id="laInputText" onAction="#laValidate" text="440" />
+                                            </children>
+                                        </HBox>
+                                        <Slider fx:id="laSlider" blockIncrement="1.0" max="799.0" min="440.0" minorTickCount="1" prefHeight="12.0" prefWidth="200.0" value="440.0" />
+                                        <Text fx:id="laValidation" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="200.0" />
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="30.0" left="30.0" right="30.0" top="15.0" />
+                                    </padding>
+                                </VBox>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem Ipsum is simply dummytext of the printing andtypesetting industry. LoremIpsum has been the industry'sstandard dummy text eversince the 1500s Ademas no se cuane feiof ebofn fewobnfew feiownf wfnowef wfownf wef" textAlignment="JUSTIFY" wrappingWidth="200.0">
+                                    <VBox.margin>
+                                        <Insets bottom="30.0" left="30.0" right="30.0" top="15.0" />
+                                    </VBox.margin>
+                                </Text>
+                            </children>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+            </children>
+        </HBox>
+        <ScrollPane fx:id="chordsScrollPane" fitToHeight="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="200.0" pannable="true" prefHeight="200.0" vbarPolicy="NEVER">
+            <content>
+                <HBox fx:id="chordsHBox" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+            </content>
+            <VBox.margin>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+            </VBox.margin>
+        </ScrollPane>
+        <GridPane fx:id="statusBar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <ToolBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                    <items>
+                        <Label text="Label" />
+                    </items>
+                </ToolBar>
+                <ToolBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="1">
+                    <items>
+                        <Label text="Label" />
+                    </items>
+                </ToolBar>
+            </children>
+        </GridPane>
+    </children>
+</VBox>
