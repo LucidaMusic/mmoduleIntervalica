@@ -16,11 +16,11 @@ import java.util.List;
 @AllArgsConstructor
 public class Chord {
   private Float duration = null;
-  private Notes root;
+  private Note root;
   private Modes mode;
   private Extension extension;
   private List<DoubleExtensions> doubleExtensions = new ArrayList<>();
-  private Notes inversion;
+  private Note inversion;
   private String name;
 
   public Chord() {

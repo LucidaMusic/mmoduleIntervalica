@@ -1,15 +1,9 @@
 package org.lucida.Tools;
 
-import org.lucida.Enums.DoubleExtensions;
-import org.lucida.Enums.Extension;
-import org.lucida.Enums.Modes;
-import org.lucida.Enums.Notes;
+import org.lucida.Enums.*;
 import org.lucida.Exceptions.ChordNameNotDecipherableException;
 import org.lucida.Objects.Chord;
-import org.lucida.Objects.ChordRequest;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.lucida.Objects.Note;
 
 public class ChordNamesDecipher {
 
@@ -32,21 +26,15 @@ public class ChordNamesDecipher {
     return chord;
   }
 
-  public static List<Chord> decipher(List<ChordRequest> chordsRequested) throws ChordNameNotDecipherableException {
-    List<Chord> chordList = new ArrayList<>();
-    for (ChordRequest chordRequest : chordsRequested) {
-      chordList.add(decipher(chordRequest.getChordName(), chordRequest.getDuration()));
-    }
-    return chordList;
-  }
-
-
   private static void searchRoot(StringBuilder chordName, Chord chord) throws ChordNameNotDecipherableException {
-    for (int i = Math.min(chordName.length(), 4); i >= 1; i--) {
+    for (int i = Math.min(chordName.length(), 3); i >= 1; i--) {
       String possibleRoot = chordName.substring(0, i);
       if (Notes.isValid(possibleRoot)) {
-        chord.setRoot(Notes.get(possibleRoot));
         chordName.delete(0, possibleRoot.length());
+        //Search for alteration
+        Alterations alteration = searchAlteration(chordName);
+        Note note = new Note(Notes.get(possibleRoot), alteration);
+        chord.setRoot(note);
         return;
       }
     }
@@ -58,13 +46,23 @@ public class ChordNamesDecipher {
     int indexOf = chordName.indexOf("/");
 
     if (indexOf != -1) {
-      String inversion = chordName.substring(indexOf + 1, chordName.length());
+      StringBuilder inversion = new StringBuilder(chordName.substring(indexOf + 1, chordName.length()));
 
-      if (!Notes.isValid(inversion))
-        throw new ChordNameNotDecipherableException();
+      //Search for note
+      for (int i = Math.min(inversion.length(), 3); i >= 1; i--) {
+        String possibleInversionNoteName = inversion.substring(0, i);
+        if (Notes.isValid(possibleInversionNoteName)) {
+          //I've found note, lets find if it has alterations
+          inversion.delete(0, possibleInversionNoteName.length());
+          Alterations alteration = searchAlteration(inversion);
+          Note note = new Note(Notes.get(possibleInversionNoteName), alteration);
+          chord.setInversion(note);
 
-      chord.setInversion(Notes.get(inversion));
-      chordName.delete(indexOf, chordName.length());
+          chordName.delete(indexOf, chordName.length());
+          return;
+        }
+      }
+      throw new ChordNameNotDecipherableException();
     }
   }
 
@@ -104,6 +102,17 @@ public class ChordNamesDecipher {
     } else {
       throw new ChordNameNotDecipherableException();
     }
+  }
+
+  private static Alterations searchAlteration(StringBuilder chordName) {
+    for (int i = Math.min(chordName.length(), 2); i >= 1; i--) {
+      String possibleAlteration = chordName.substring(chordName.length() - i, chordName.length());
+      if (Alterations.isValid(possibleAlteration)) {
+        chordName.delete(0, possibleAlteration.length());
+        return Alterations.get(possibleAlteration);
+      }
+    }
+    return Alterations.NATURAL;
   }
 }
 

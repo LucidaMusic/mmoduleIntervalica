@@ -30,7 +30,9 @@ public class ChordInfoController implements Initializable {
 
   public void setChord(Chord chord) {
     this.chord = chord;
-    rootNameLabel.setText(chord.getRoot().getLatinName());
+    System.out.println(chord.getRoot().getName(true));
+    System.out.println(chord.getRoot().getAlteration().getId());
+    rootNameLabel.setText(chord.getRoot().getName(true));
     modeNameLabel.setText(chord.getMode().getFormalSpanishName());
     Optional.ofNullable(chord.getExtension())
       .ifPresent(extension -> {

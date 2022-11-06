@@ -1,6 +1,5 @@
+/*
 package org.lucida.Tools;
-
-import org.lucida.Objects.ContextualizedChord;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -85,3 +84,4 @@ public class ChordNormalizator {
     return octaves;
   }
 }
+*/

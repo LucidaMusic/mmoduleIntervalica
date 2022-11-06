@@ -10,6 +10,7 @@ import java.util.Arrays;
 public enum Alterations {
   DOUBLE_FLAT("Doble bemol", "bb", -2),
   FLAT("Bemol", "b", -1),
+  NATURAL("Natural", "", 0),
   SHARP("Sostenido", "#", 1),
   DOUBLE_SHARP("Doble sostenido", "##", 2);
 

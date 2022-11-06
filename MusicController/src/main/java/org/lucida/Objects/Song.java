@@ -8,13 +8,13 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 public class Song {
-  private List<ContextualizedChord> contextualizedChords;
+  private List<Chord> chords;
   private int bpm;
 
   public void getInfo() {
-    this.getContextualizedChords()
+    this.getChords()
       .stream()
-      .map(ContextualizedChord::toString)
+      .map(Chord::toString)
       .forEach(System.out::println);
   }
 }

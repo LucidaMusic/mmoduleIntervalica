@@ -1,3 +1,4 @@
+/*
 package org.lucida.Tools;
 
 import org.lucida.Enums.DoubleExtensions;
@@ -5,7 +6,6 @@ import org.lucida.Enums.Extension;
 import org.lucida.Enums.Intervals;
 import org.lucida.Enums.Notes;
 import org.lucida.Objects.Chord;
-import org.lucida.Objects.ContextualizedChord;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,4 +72,4 @@ public class ChordContextualizator {
     }
     return contextualizedChords;
   }
-}
+}*/
