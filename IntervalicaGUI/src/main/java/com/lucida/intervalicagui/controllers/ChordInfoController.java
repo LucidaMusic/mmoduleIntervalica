@@ -2,7 +2,12 @@ package com.lucida.intervalicagui.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import org.lucida.Objects.Chord;
 
 import java.net.URL;
@@ -11,16 +16,15 @@ import java.util.ResourceBundle;
 
 
 public class ChordInfoController implements Initializable {
+  //Labels
   @FXML
   Label rootNameLabel;
   @FXML
   Label modeNameLabel;
+
+  //Other
   @FXML
-  Label extensionNameLabel;
-  @FXML
-  Label doubleExtensionNameLabel;
-  @FXML
-  Label inversionNameLabel;
+  GridPane chordInfoGrid;
 
   private Chord chord;
 
@@ -29,10 +33,21 @@ public class ChordInfoController implements Initializable {
     rootNameLabel.setText(chord.getRoot().getLatinName());
     modeNameLabel.setText(chord.getMode().getFormalSpanishName());
     Optional.ofNullable(chord.getExtension())
-      .ifPresent(extension -> extensionNameLabel.setText(extension.getName()));
+      .ifPresent(extension -> {
+        chordInfoGrid.addRow(3, new Label("Extension"), getGridLabel(extension.getName()));
+      });
 //    Optional.ofNullable(chord.getDoubleExtensions().getName())
 //      .ifPresent(doubleExtension-> doubleExtensionNameLabel.setText(doubleExtension));
 
+
+  }
+
+  private Node getGridLabel(String text){
+    Label label=new Label(text);
+    label.setOpaqueInsets(new Insets(0,0,0,5));
+    StackPane stackPane= new StackPane(label);
+    stackPane.setAlignment(Pos.CENTER);
+    return stackPane;
   }
 
   @Override

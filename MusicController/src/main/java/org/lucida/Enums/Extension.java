@@ -1,5 +1,6 @@
 package org.lucida.Enums;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Getter
+@AllArgsConstructor
 public enum Extension {
   MIN6("6m"),
   MAJ6("6"),
@@ -18,10 +20,6 @@ public enum Extension {
   MAJ13("13");
 
   private final String name;
-
-  Extension(String name) {
-    this.name = name;
-  }
 
   public static boolean isValid(String extensionName) {
     return Arrays.stream(Extension.values())
@@ -48,7 +46,7 @@ public enum Extension {
         return intervals;
 
       case MIN7:
-        if (mode.equals(Modes.MAJOR) || mode.equals(Modes.MAJOR2)) // COnsideramos septima de dominante
+        if (mode.equals(Modes.MAJOR)) // COnsideramos septima de dominante
           intervals.add(Intervals.DOM7);
         else if (mode.equals(Modes.DIMINISHED))
           intervals.add(Intervals.DIM7);
@@ -73,7 +71,7 @@ public enum Extension {
       case JUST11:
         if (mode.equals(Modes.MINOR))
           intervals.add(Intervals.JUST11); // Onceava
-        else if (mode.equals(Modes.MAJOR) || mode.equals(Modes.MAJOR2))
+        else if (mode.equals(Modes.MAJOR))
           intervals.add(Intervals.AUG11); // Onceava aumentada
 
         intervals.addAll(getIntervalsThatAdds(Extension.MAJ9, mode));

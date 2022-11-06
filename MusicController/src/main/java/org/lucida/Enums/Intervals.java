@@ -1,10 +1,12 @@
 package org.lucida.Enums;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.Arrays;
 
 @Getter
+@AllArgsConstructor
 public enum Intervals {
     UNISON("Unísono", 1, 0),
     MIN2("Segunda menor", 16 / 15f, 1),
@@ -36,16 +38,10 @@ public enum Intervals {
     private final float ratio;
     private final int scaleJumps;
 
-    Intervals(String spanishName, float ratio, int scaleJumps) {
-        this.spanishName = spanishName;
-        this.ratio = ratio;
-        this.scaleJumps = scaleJumps;
-    }
-
     public static Intervals get(Notes a, Notes b) {
         return Arrays.stream(Intervals.values())
                 //All intervals must be positive
-                .filter(interval -> interval.scaleJumps == (b.getId() - a.getId() < 0 ? b.getId() - a.getId() + 12 : b.getId() - a.getId()))
+                .filter(interval -> interval.scaleJumps == (b.getRelativePosition() - a.getRelativePosition() < 0 ? b.getRelativePosition() - a.getRelativePosition() + 12 : b.getRelativePosition() - a.getRelativePosition()))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Not contemplated interval"));
     }

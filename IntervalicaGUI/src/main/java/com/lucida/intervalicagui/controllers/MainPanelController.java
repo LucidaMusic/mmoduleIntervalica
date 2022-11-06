@@ -72,5 +72,6 @@ public class MainPanelController extends ChordListController {
       0.5f, 1f, 2f, 4f);
 
     durationChoiceBox.setItems(durationChoices);
+    durationChoiceBox.setValue(1f);
   }
 }

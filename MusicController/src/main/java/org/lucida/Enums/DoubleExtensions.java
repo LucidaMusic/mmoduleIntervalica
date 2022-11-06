@@ -1,9 +1,11 @@
 package org.lucida.Enums;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.Arrays;
 @Getter
+@AllArgsConstructor
 public enum DoubleExtensions {
     ADD2("add2", Intervals.MAJ2),
     ADD4("add4", Intervals.JUST4),
@@ -14,11 +16,6 @@ public enum DoubleExtensions {
 
     private final String name;
     private final Intervals intervals;
-
-    DoubleExtensions(String name, Intervals intervals){
-        this.name = name;
-        this.intervals=intervals;
-    }
 
     public static boolean isValid(String doubleExtensionName) {
         return Arrays.stream(DoubleExtensions.values())

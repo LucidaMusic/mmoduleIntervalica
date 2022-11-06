@@ -1,7 +1,13 @@
 package org.lucida;
 
+import org.lucida.Objects.Chord;
+
 public class Main {
   public static void main(String[] args) {
-    System.out.println("Hello world!");
+    String chordName="La"; //La Do# Mi
+
+
+
+    //String chordName="La#"; //La# Do##
   }
 }
