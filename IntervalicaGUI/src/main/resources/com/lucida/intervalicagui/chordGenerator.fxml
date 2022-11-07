@@ -163,6 +163,11 @@
                                     <ChoiceBox fx:id="inversionChoiceBox" maxWidth="1.7976931348623157E308" prefHeight="25.0" />
                                  </children>
                               </VBox>
+                              <Button mnemonicParsing="false" text="Crear">
+                                 <HBox.margin>
+                                    <Insets top="17.0" />
+                                 </HBox.margin>
+                              </Button>
                            </children>
                         </HBox>
                             </children>
