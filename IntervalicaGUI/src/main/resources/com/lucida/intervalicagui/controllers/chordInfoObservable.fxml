@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucida.intervalicagui.controllers.ChordInfoController">
+<AnchorPane maxHeight="-Infinity" prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lucida.intervalicagui.controllers.ChordInfoController3">
    <children>
       <HBox>
          <children>
@@ -29,21 +29,26 @@
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
                         <Label alignment="CENTER" text="Tónica" />
                         <Label fx:id="rootNameLabel" alignment="CENTER" wrapText="true" GridPane.columnIndex="1" />
                         <Label alignment="CENTER" contentDisplay="CENTER" text="Modo" GridPane.rowIndex="1" />
                         <Label fx:id="modeNameLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <StackPane GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                           <children>
-                              <Label>
-                                 <StackPane.margin>
-                                    <Insets left="5.0" />
-                                 </StackPane.margin>
-                              </Label>
-                           </children>
-                        </StackPane>
+                        <Label text="Extension" GridPane.rowIndex="2" />
+                        <Label fx:id="extensionNameLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label text="Añadidura" GridPane.rowIndex="3" />
+                        <Label fx:id="doubleExtensionNameLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label text="Inversión" GridPane.rowIndex="4" />
+                        <Label fx:id="inversionNameLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="rootFreq" GridPane.columnIndex="2" />
+                        <Label fx:id="modeFreq" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <Label GridPane.columnIndex="2" GridPane.rowIndex="4" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

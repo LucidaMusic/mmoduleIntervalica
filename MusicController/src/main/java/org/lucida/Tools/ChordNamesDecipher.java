@@ -86,8 +86,8 @@ public class ChordNamesDecipher {
   private static void searchExtension(StringBuilder chordName, Chord chord) {
     for (int i = Math.min(chordName.length(), 4); i >= 0; i--) {
       String possibleExtension = chordName.substring(chordName.length() - i, chordName.length());
-      if (Extension.isValid(possibleExtension)) {
-        chord.setExtension(Extension.get(possibleExtension));
+      if (Extensions.isValid(possibleExtension)) {
+        chord.setExtension(Extensions.get(possibleExtension));
         chordName.delete(chordName.length() - i, chordName.length());
         return;
       }
@@ -106,10 +106,10 @@ public class ChordNamesDecipher {
 
   private static Alterations searchAlteration(StringBuilder chordName) {
     for (int i = Math.min(chordName.length(), 2); i >= 1; i--) {
-      String possibleAlteration = chordName.substring(chordName.length() - i, chordName.length());
+      String possibleAlteration = chordName.substring(0, i);
       if (Alterations.isValid(possibleAlteration)) {
         chordName.delete(0, possibleAlteration.length());
-        return Alterations.get(possibleAlteration);
+        return Alterations.getById(possibleAlteration);
       }
     }
     return Alterations.NATURAL;

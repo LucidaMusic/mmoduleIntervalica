@@ -15,7 +15,7 @@ public class ChordListController {
   HBox chordsHBox;
 
   public Parent getRectangleChord(Chord chord) throws IOException {
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("chordInfoObservable.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("chordInfoObservable2.fxml"));
     Parent chordInfoObservable = loader.load();
 
     ChordInfoController chordInfoController = loader.getController();

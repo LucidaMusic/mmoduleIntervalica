@@ -24,11 +24,17 @@ public enum Alterations {
       .anyMatch(alteration -> alteration.getId().equals(alterationId));
   }
 
-  public static Alterations get(String alterationId) {
+  public static Alterations getById(String alterationId) {
     return Arrays.stream(Alterations.values())
       .filter(alteration -> alteration.getId().equals(alterationId))
       .findFirst()
       .orElseThrow(() -> new RuntimeException(alterationId + " was not a valid alteration id"));
+  }
+  public static Alterations getByAlterationValue(int alterationValue) {
+    return Arrays.stream(Alterations.values())
+      .filter(alteration -> alteration.getAlterationValue()==alterationValue)
+      .findFirst()
+      .orElseThrow(() -> new RuntimeException(alterationValue + " was not a valid alteration value"));
   }
 
   @Override

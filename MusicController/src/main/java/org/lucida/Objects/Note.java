@@ -21,4 +21,13 @@ public class Note {
     return (latinNomenclature ? getNote().getLatinName() : getNote().getAmericanName())
       + getAlteration().getId();
   }
+
+  public int getTrueRelativePosition(){
+    return getNote().getRelativePosition()+ alteration.getAlterationValue();
+  }
+
+  @Override
+  public String toString() {
+    return getNote().toString(true)+getAlteration().getId();
+  }
 }
