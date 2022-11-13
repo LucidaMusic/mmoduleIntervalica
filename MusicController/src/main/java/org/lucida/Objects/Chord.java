@@ -7,6 +7,7 @@ import org.lucida.Enums.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Getter
 @Setter
@@ -43,33 +44,50 @@ public class Chord {
 
     //For the two notes of the mode
     for (int i = 0; i < 2; i++) {
-      //I can get the mode notes names by the intervals it defines and the root note name.
-      Intervals interval = getMode().getIntervalsThatAdds().get(i);
-      int actualPosition = getRoot().getNote().getAbsolutePosition();
-
-      int newPosition = interval.getNoteJumps() + actualPosition;
-      while (newPosition > 6) {
-        newPosition = newPosition - 7;
-      }
-
-      Notes note = Notes.getByAbsolutePosition(newPosition);
-
-      //I have note name, but, what should be its alteration?
-      int newRelativePosition = getRoot().getTrueRelativePosition() + interval.getScaleJumps();
-
-      while (newRelativePosition > 11) {
-        newRelativePosition = newRelativePosition - 12;
-      }
-
-      Alterations alteration = Alterations.getByAlterationValue(newRelativePosition - note.getRelativePosition());
-      notes[i] = new Note(note, alteration);
+      notes[i] = deduceNoteFromRoot(getMode().getIntervalsThatAdds().get(i));;
     }
 
     return notes;
   }
 
+  public Stream<Note> getExtensionNotes() {
+    return Extensions
+      .getIntervalsThatAdds(getExtension(), getMode())
+      .stream()
+      .map(this::deduceNoteFromRoot);
+  }
+
+  public List<Note> getDoubleExtensionNotes() {
+    return doubleExtensions
+      .stream()
+      .map(DoubleExtensions::getInterval)
+      .map(this::deduceNoteFromRoot)
+      .toList();
+  }
+
   public void addDoubleExtension(DoubleExtensions doubleExtensions) {
     this.doubleExtensions.add(doubleExtensions);
+  }
+
+  private Note deduceNoteFromRoot(Intervals interval) {
+    int actualPosition = getRoot().getNote().getAbsolutePosition();
+
+    int newPosition = interval.getNoteJumps() + actualPosition;
+    while (newPosition > 6) {
+      newPosition = newPosition - 7;
+    }
+
+    Notes note = Notes.getByAbsolutePosition(newPosition);
+
+    //I have note name, but, what should be its alteration?
+    int newRelativePosition = getRoot().getTrueRelativePosition() + interval.getScaleJumps();
+
+    while (newRelativePosition > 11) {
+      newRelativePosition = newRelativePosition - 12;
+    }
+
+    Alterations alteration = Alterations.getByAlterationValue(newRelativePosition - note.getRelativePosition());
+    return new Note(note, alteration);
   }
 
   @Override

@@ -15,7 +15,7 @@ public enum DoubleExtensions {
     ADD13("add13", Intervals.MAJ13);
 
     private final String name;
-    private final Intervals intervals;
+    private final Intervals interval;
 
     public static boolean isValid(String doubleExtensionName) {
         return Arrays.stream(DoubleExtensions.values())

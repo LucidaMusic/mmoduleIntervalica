@@ -256,7 +256,7 @@
                 </ScrollPane>
             </children>
         </HBox>
-        <ScrollPane fx:id="chordsScrollPane" fitToHeight="true" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="200.0" pannable="true" prefHeight="200.0" vbarPolicy="NEVER">
+        <ScrollPane fx:id="chordsScrollPane" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="201.0" pannable="true" vbarPolicy="NEVER">
             <content>
                 <HBox fx:id="chordsHBox" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
             </content>

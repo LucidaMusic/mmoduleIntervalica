@@ -53,6 +53,7 @@ public class MainPanelController extends ChordListController {
 
   @FXML
   Text chordNameValidation2;
+
   //Chord dynamically created by choice boxes
   private Chord chord;
 

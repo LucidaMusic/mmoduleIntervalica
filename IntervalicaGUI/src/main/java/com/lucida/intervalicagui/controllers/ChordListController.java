@@ -20,6 +20,7 @@ public class ChordListController {
 
     ChordInfoController chordInfoController = loader.getController();
     chordInfoController.setChord(chord);
+    chordInfoController.createGrid();
 
     return chordInfoObservable;
   }
